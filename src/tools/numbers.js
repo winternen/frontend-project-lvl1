@@ -7,7 +7,14 @@ const isEvenNumber = (num) => (
   num % 2 === 0 ? 'yes' : 'no'
 );
 
+const getRandomOperator = () => {
+  const operators = ['*', '+', '-'];
+  const length = operators.length - 1;
+  return operators[getRandomNumber(0, length)];
+};
+
 export {
   getRandomNumber,
   isEvenNumber,
+  getRandomOperator,
 };
