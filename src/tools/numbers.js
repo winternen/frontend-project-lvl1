@@ -32,10 +32,20 @@ const getProgression = (num, steps, size) => {
   return progressionList;
 };
 
+const isPrimeNumber = (num) => {
+  const iter = (divisor) => {
+    if (num === divisor) return 'yes';
+    if (num % divisor === 0) return 'no';
+    return iter(divisor + 1);
+  };
+  return iter(2);
+};
+
 export {
   getRandomNumber,
   isEvenNumber,
   getRandomOperator,
   getGreatestDivisor,
   getProgression,
+  isPrimeNumber,
 };
