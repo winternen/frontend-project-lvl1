@@ -5,18 +5,25 @@ const gameEngine = (setGameMode, description) => {
   const playerName = readlineSync.question('May I have your name? ');
   console.log(`Hello, ${playerName}!`);
   console.log(description);
-  for (let i = 0; i < 3;) {
+  const maxRounds = 3;
+
+  const startRound = (counter) => {
+    if (counter === maxRounds) {
+      console.log(`Congratulations, ${playerName}!`);
+      return;
+    }
     const [question, correctAnswer] = setGameMode();
     console.log(`Question: ${question}`);
     const answer = readlineSync.question('Your answer?: ');
-    if (answer === correctAnswer) {
-      console.log('Correct!');
-      i += 1;
-    } else {
-      return console.log(`"${answer}" is wrong answer ;(. Correct answer was "${correctAnswer}".\nLet's try again, ${playerName}!`);
+    if (answer !== correctAnswer) {
+      console.log(`"${answer}" is wrong answer ;(. Correct answer was "${correctAnswer}".\nLet's try again, ${playerName}!`);
+      return;
     }
-  }
-  return console.log(`Congratulations, ${playerName}!`);
+    console.log('Correct!');
+    startRound(counter + 1);
+  };
+
+  return startRound(0);
 };
 
 export default gameEngine;

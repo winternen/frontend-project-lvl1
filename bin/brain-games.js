@@ -1,4 +1,4 @@
 #!/usr/bin/env node
-import printGreeting from '../src/index.js';
+import startGame from '../src/index.js';
 
-printGreeting();
+startGame();
