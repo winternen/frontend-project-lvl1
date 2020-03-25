@@ -29,8 +29,8 @@ const generateGame = () => {
 
   const question = `${firstNumber} ${randomOperator} ${secondNumber}`;
   const correctAnswer = String(getCorrectAnswer(randomOperator));
+
   return [question, correctAnswer];
 };
 
-const startGame = () => gameEngine(generateGame, description);
-export default startGame;
+export default () => gameEngine(generateGame, description);

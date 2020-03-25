@@ -16,8 +16,8 @@ const generateGame = () => {
 
   const question = `${firstNumber} ${secondNumber}`;
   const correctAnswer = String(getGreatestCommonDivisor(firstNumber, secondNumber));
+
   return [question, correctAnswer];
 };
 
-const startGame = () => gameEngine(generateGame, description);
-export default startGame;
+export default () => gameEngine(generateGame, description);

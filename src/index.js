@@ -5,16 +5,19 @@ const gameEngine = (generateGame, description) => {
   const playerName = readlineSync.question('May I have your name? ');
   console.log(`Hello, ${playerName}!`);
   console.log(description);
-  const maxRounds = 3;
+
+  const maxRound = 3;
+  const firstRound = 0;
 
   const startRound = (counter) => {
-    if (counter === maxRounds) {
+    if (counter === maxRound) {
       console.log(`Congratulations, ${playerName}!`);
       return;
     }
     const [question, correctAnswer] = generateGame();
     console.log(`Question: ${question}`);
     const answer = readlineSync.question('Your answer?: ');
+
     if (answer !== correctAnswer) {
       console.log(`"${answer}" is wrong answer ;(. Correct answer was "${correctAnswer}".`);
       console.log(`Let's try again, ${playerName}!`);
@@ -23,8 +26,7 @@ const gameEngine = (generateGame, description) => {
     console.log('Correct!');
     startRound(counter + 1);
   };
-
-  startRound(0);
+  startRound(firstRound);
 };
 
 export default gameEngine;

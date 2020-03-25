@@ -12,5 +12,4 @@ const generateGame = () => {
   return [question, correctAnswer];
 };
 
-const startGame = () => gameEngine(generateGame, description);
-export default startGame;
+export default () => gameEngine(generateGame, description);
