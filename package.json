@@ -1,7 +1,7 @@
 {
   "name": "frontend-project-lvl1",
-  "version": "1.0.0",
-  "description": "",
+  "version": "1.2.0",
+  "description": "the first Hexlet project, is five command line games",
   "type": "module",
   "main": "src/index.js",
   "scripts": {
@@ -19,7 +19,7 @@
     "brain-progression": "bin/brain-progression.js",
     "brain-prime": "bin/brain-prime.js"
   },
-  "author": "",
+  "author": "winternen",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/winternen/frontend-project-lvl1/issues"
@@ -32,5 +32,10 @@
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.1.0",
     "eslint-plugin-import": "^2.20.1"
-  }
+  },
+  "keywords": [
+    "hexlet",
+    "brain-games",
+    "cli-games"
+  ]
 }

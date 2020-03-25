@@ -1,31 +1,36 @@
 import gameEngine from '../index.js';
-import { getRandomNumber, getRandomOperator } from '../tools/mathematics.js';
+import getRandomNumber from '../math.js';
 
-export default () => {
-  const description = 'What is the result of the expression?';
+const description = 'What is the result of the expression?';
 
-  const setGameMode = () => {
-    const firstNumber = getRandomNumber(1, 50);
-    const secondNumber = getRandomNumber(1, 50);
-    const randomOperator = getRandomOperator();
+const getRandomOperator = () => {
+  const operators = ['*', '+', '-'];
+  const length = operators.length - 1;
+  return operators[getRandomNumber(0, length)];
+};
 
-    const getCorrectAnswer = (operator) => {
-      switch (operator) {
-        case '*':
-          return firstNumber * secondNumber;
-        case '+':
-          return firstNumber + secondNumber;
-        case '-':
-          return firstNumber - secondNumber;
-        default:
-          return null;
-      }
-    };
+const generateGame = () => {
+  const firstNumber = getRandomNumber(1, 50);
+  const secondNumber = getRandomNumber(1, 50);
+  const randomOperator = getRandomOperator();
 
-    const question = `${firstNumber} ${randomOperator} ${secondNumber}`;
-    const correctAnswer = String(getCorrectAnswer(randomOperator));
-    return [question, correctAnswer];
+  const getCorrectAnswer = (operator) => {
+    switch (operator) {
+      case '*':
+        return firstNumber * secondNumber;
+      case '+':
+        return firstNumber + secondNumber;
+      case '-':
+        return firstNumber - secondNumber;
+      default:
+        return null;
+    }
   };
 
-  return gameEngine(setGameMode, description);
+  const question = `${firstNumber} ${randomOperator} ${secondNumber}`;
+  const correctAnswer = String(getCorrectAnswer(randomOperator));
+  return [question, correctAnswer];
 };
+
+const startGame = () => gameEngine(generateGame, description);
+export default startGame;

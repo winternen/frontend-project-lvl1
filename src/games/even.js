@@ -1,15 +1,16 @@
 import gameEngine from '../index.js';
-import { getRandomNumber, isEvenNumber } from '../tools/mathematics.js';
+import getRandomNumber from '../math.js';
 
-export default () => {
-  const description = 'Answer "yes" if the number is even, otherwise answer "no"';
+const description = 'Answer "yes" if the number is even, otherwise answer "no"';
 
-  const setGameMode = () => {
-    const question = getRandomNumber(1, 50);
-    const correctAnswer = isEvenNumber(question);
+const isEvenNumber = (num) => num % 2 === 0;
 
-    return [question, correctAnswer];
-  };
+const generateGame = () => {
+  const question = getRandomNumber(1, 50);
+  const correctAnswer = isEvenNumber(question) ? 'yes' : 'no';
 
-  return gameEngine(setGameMode, description);
+  return [question, correctAnswer];
 };
+
+const startGame = () => gameEngine(generateGame, description);
+export default startGame;

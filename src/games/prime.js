@@ -1,15 +1,23 @@
 import gameEngine from '../index.js';
-import { getRandomNumber, isPrimeNumber } from '../tools/mathematics.js';
+import getRandomNumber from '../math.js';
 
-export default () => {
-  const description = 'Answer "yes" if given number is prime. Otherwise answer "no".';
+const description = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
-  const setGameMode = () => {
-    const question = getRandomNumber(1, 500);
-    const correctAnswer = isPrimeNumber(question);
-
-    return [question, correctAnswer];
+const isPrimeNumber = (num) => {
+  const iter = (divisor) => {
+    if (num === divisor) return true;
+    if (num % divisor === 0) return false;
+    return iter(divisor + 1);
   };
-
-  return gameEngine(setGameMode, description);
+  return iter(2);
 };
+
+const generateGame = () => {
+  const question = getRandomNumber(1, 500);
+  const correctAnswer = isPrimeNumber(question) ? 'yes' : 'no';
+
+  return [question, correctAnswer];
+};
+
+const startGame = () => gameEngine(generateGame, description);
+export default startGame;
