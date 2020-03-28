@@ -13,12 +13,11 @@ const getGreatestCommonDivisor = (a, b) => {
 const generateGame = () => {
   const firstNumber = getRandomNumber(1, 50);
   const secondNumber = getRandomNumber(1, 50);
-  const commonDivisor = getGreatestCommonDivisor(firstNumber, secondNumber);
 
   const question = `${firstNumber} ${secondNumber}`;
-  const correctAnswer = String(commonDivisor);
+  const correctAnswer = getGreatestCommonDivisor(firstNumber, secondNumber);
 
-  return [question, correctAnswer];
+  return [question, String(correctAnswer)];
 };
 
 export default () => gameEngine(generateGame, description);

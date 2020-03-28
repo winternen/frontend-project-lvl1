@@ -9,8 +9,8 @@ const gameEngine = (generateGame, description) => {
   const maxRound = 3;
   const firstRound = 0;
 
-  const startRound = (counter) => {
-    if (counter === maxRound) {
+  const playRound = (round) => {
+    if (round === maxRound) {
       console.log(`Congratulations, ${playerName}!`);
       return;
     }
@@ -24,9 +24,9 @@ const gameEngine = (generateGame, description) => {
       return;
     }
     console.log('Correct!');
-    startRound(counter + 1);
+    playRound(round + 1);
   };
-  startRound(firstRound);
+  playRound(firstRound);
 };
 
 export default gameEngine;

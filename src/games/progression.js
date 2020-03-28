@@ -4,15 +4,14 @@ import getRandomNumber from '../math.js';
 const description = 'What number is missing in the progression?';
 
 const getProgression = (begin, step, length) => {
-  const numbers = [];
-  const iter = (counter, num) => {
+  const progression = [];
+  const iter = (counter, number) => {
     if (counter === length) return;
-    numbers.push(num);
-    iter(counter + 1, num + step);
+    progression.push(number);
+    iter(counter + 1, number + step);
   };
   iter(0, begin);
-  const progressionList = numbers.join(' + ');
-  return progressionList;
+  return progression;
 };
 
 const generateGame = () => {
@@ -20,16 +19,15 @@ const generateGame = () => {
   const stepCount = getRandomNumber(1, 50);
   const length = 10;
 
-  const listOfProgression = getProgression(startNumber, stepCount, length);
-  const numbersColl = listOfProgression.split(' + ');
-  const hiddenPosition = getRandomNumber(0, numbersColl.length - 1);
+  const progression = getProgression(startNumber, stepCount, length);
+  const hiddenPosition = getRandomNumber(0, progression.length - 1);
   const hiddenChar = '..';
 
-  const temp = numbersColl[hiddenPosition];
-  numbersColl[hiddenPosition] = hiddenChar;
+  const temp = progression[hiddenPosition];
+  progression[hiddenPosition] = hiddenChar;
 
-  const question = numbersColl.join(' + ');
-  const correctAnswer = temp;
+  const question = progression.join(' + ');
+  const correctAnswer = String(temp);
 
   return [question, correctAnswer];
 };

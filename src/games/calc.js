@@ -5,30 +5,30 @@ const description = 'What is the result of the expression?';
 
 const getRandomOperator = () => {
   const operators = ['*', '+', '-'];
-  const length = operators.length - 1;
-  return operators[getRandomNumber(0, length)];
+  const lastOperator = operators.length - 1;
+  return operators[getRandomNumber(0, lastOperator)];
+};
+
+const getCorrectAnswer = (firstNumber, secondNumber, operator) => {
+  switch (operator) {
+    case '*':
+      return String(firstNumber * secondNumber);
+    case '+':
+      return String(firstNumber + secondNumber);
+    case '-':
+      return String(firstNumber - secondNumber);
+    default:
+      return null;
+  }
 };
 
 const generateGame = () => {
   const firstNumber = getRandomNumber(1, 50);
   const secondNumber = getRandomNumber(1, 50);
-  const randomOperator = getRandomOperator();
+  const operator = getRandomOperator();
 
-  const getCorrectAnswer = (operator) => {
-    switch (operator) {
-      case '*':
-        return firstNumber * secondNumber;
-      case '+':
-        return firstNumber + secondNumber;
-      case '-':
-        return firstNumber - secondNumber;
-      default:
-        return null;
-    }
-  };
-
-  const question = `${firstNumber} ${randomOperator} ${secondNumber}`;
-  const correctAnswer = String(getCorrectAnswer(randomOperator));
+  const question = `${firstNumber} ${operator} ${secondNumber}`;
+  const correctAnswer = getCorrectAnswer(firstNumber, secondNumber, operator);
 
   return [question, correctAnswer];
 };
