@@ -3,14 +3,14 @@ import getRandomNumber from '../math.js';
 
 const description = 'What number is missing in the progression?';
 
-const getProgression = (begin, step, length) => {
+const getProgression = (firstNumber, step, length) => {
   const progression = [];
   const iter = (counter, number) => {
     if (counter === length) return;
     progression.push(number);
     iter(counter + 1, number + step);
   };
-  iter(0, begin);
+  iter(0, firstNumber);
   return progression;
 };
 
