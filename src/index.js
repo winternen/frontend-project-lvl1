@@ -10,12 +10,12 @@ const gameEngine = (generateGame, description) => {
   const firstRound = 0;
 
   const playRound = (round) => {
+    const [question, correctAnswer] = generateGame();
+
     if (round === maxRound) {
       console.log(`Congratulations, ${playerName}!`);
       return;
     }
-
-    const [question, correctAnswer] = generateGame();
     console.log(`Question: ${question}`);
     const answer = readlineSync.question('Your answer?: ');
 
@@ -24,10 +24,10 @@ const gameEngine = (generateGame, description) => {
       console.log(`Let's try again, ${playerName}!`);
       return;
     }
-
     console.log('Correct!');
     playRound(round + 1);
   };
+
   playRound(firstRound);
 };
 
