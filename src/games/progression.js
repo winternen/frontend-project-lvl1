@@ -21,13 +21,11 @@ const generateGame = () => {
 
   const progression = getProgression(startNumber, stepCount, length);
   const hiddenPosition = getRandomNumber(0, progression.length - 1);
-  const hiddenChar = '..';
+  const hiddenValue = '..';
 
-  const temp = progression[hiddenPosition];
-  progression[hiddenPosition] = hiddenChar;
-
+  const correctAnswer = progression[hiddenPosition];
+  progression[hiddenPosition] = hiddenValue;
   const question = progression.join(' + ');
-  const correctAnswer = String(temp);
 
   return [question, correctAnswer];
 };

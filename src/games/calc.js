@@ -5,8 +5,8 @@ const description = 'What is the result of the expression?';
 
 const getRandomOperator = () => {
   const operators = ['*', '+', '-'];
-  const lastOperator = operators.length - 1;
-  return operators[getRandomNumber(0, lastOperator)];
+  const lastOperatorIndex = operators.length - 1;
+  return operators[getRandomNumber(0, lastOperatorIndex)];
 };
 
 const getCorrectAnswer = (firstNumber, secondNumber, operator) => {
